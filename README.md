@@ -17,6 +17,14 @@ On v1.0.2 the changes are:
 - Update schema.yml inside models directory to check model effects upon database
 - Obs. stg_employee is materialized as a view, not a table, on the dw schema
 
+On v1.0.3 (wrong name as v1.3) the changes are:
+- Checking if the subdirectory change is properly done.
+- Create an OLD directory and sanitize all tutorial templates
+- Test some DB and DW changes and check if all is working well, even on error simulated cases.
+
+On v1.0.4
+- Just renaming the version and updating this readme file.
+
 ### Using the starter project
 
 Try running the following commands:
