@@ -7,6 +7,9 @@ sources:
     tables:
      - name: t_employee
      - name: t_region
+     - name: t_order
+     - name: t_customer
+     - name: t_segment
 
 models:
   - name: stg_employee
@@ -25,10 +28,25 @@ models:
     description: "Dimension table for Date, related to fact table for Orders."
     columns:
       - name: order_id
-        description: "Order id, same as in normalized table"
+        description: "Order id, same as in normalized table, this key should be gone on later versions, It needs to be a key for each day in YEARMODA format"
         tests:
           - unique
           - not_null
       - name: order_date
-        description: "The date of each order."
-      
+        description: "The date of each order, still order granularity, that is wrong."
+  - name: d_customer
+    description: "Dimension table for Customer, related to fact table Orders."
+    columns:
+      - name: customer_id
+        description: "Customer ID from normalized customer table"
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "Customer name from normalized customer table"
+      - name: segment
+        description: "Segment name, from normalized segment table"
+      - name: valid_from
+        description: "As SCD2, data from customer may change over time, this is the start time for this tuple"
+      - name: valid_to
+        description: "As SCD2, data from customer may change over time, this is the end time for this tuple"
