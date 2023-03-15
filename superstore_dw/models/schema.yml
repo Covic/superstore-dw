@@ -1,7 +1,5 @@
 version: 2
 
-version: 2
-
 sources:
   - name: norm
     database: group3
@@ -25,3 +23,12 @@ models:
         description: "The region this employee is responsible for"
   - name: d_date
     description: "Dimension table for Date, related to fact table for Orders."
+    columns:
+      - name: order_id
+        description: "Order id, same as in normalized table"
+        tests:
+          - unique
+          - not_null
+      - name: order_date
+        description: "The date of each order."
+      
