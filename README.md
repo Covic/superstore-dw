@@ -1,7 +1,9 @@
 Welcome to your new dbt project!
 
 ### This is a simple sandbox for learning dbt tools and some other cool stuff, I will use
-this README file to explain some configuration changes step by step.
+this README file to explain some configuration changes step by step. For version 1 there 
+will be only configuration and testing iussues, for version 2 on the README will be
+placed on the project folder.
 
 The first task on dbt will be to change dbt_project.yml to change the working directoty
 from root (default) to superstore_dw, after that perform a dbt test and dbt run to Check 
