@@ -13,11 +13,7 @@ sources:
      - name: t_region
      - name: t_state
      - name: t_country
-  - name: orginal
-    database: group3
-    schema: original
-    tables:
-      - name: orders
+     - name: orders
 
 models:
   - name: stg_employee

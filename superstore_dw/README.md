@@ -1,5 +1,22 @@
 #This is a sandbox project, with superstore theme, for testing and learning
 
+## VERSION 2.4.1
+
+ ISSUES:
+
+- SCD2 for location and date not suported (suposed not to change)
+
+- "Date" table stell does not use the correct granularity, could run for 
+unique dates, or use an YEARMODA format for key, or build an external source 
+with date key names and other info as a calendar.
+
+- fact table for order got source on norm schema, tracking why "original" 
+schema could not be reached.
+
+- normalized city_id and city name seems to use some external source
+
+- order data from "original" source for testing
+
 ## The general model
 
  This project deals only with order related granularity tables on a superstore 
@@ -48,7 +65,7 @@ environment to load the source data and configure the credentials.
  The first solution is a direct DW answer using fact and dimension model where the 
 “orders” are one fact table and some of the other information are dimension tables 
 related to the first one, for this design we will address only “customer”, 
-“geography” and may be “date” dimensions, since all other potential dimensions could 
+“location" and may be “date” dimensions, since all other potential dimensions could 
 be completed with better data sources (like an order status dimension, with only full 
 returned status available, data from “people” table since there is the same granularity 
 as “region” which is part of geography , or any potential “product” or “logistics” 
