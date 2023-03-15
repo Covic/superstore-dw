@@ -10,6 +10,7 @@ sources:
 
 models:
   - name: stg_employee
+    description: "First employee dimension, proxy for region and date"
     columns:
       - name: employee_id
         description: "A unique identifier for the employee"
@@ -20,3 +21,6 @@ models:
         description: "The name of the employee"
       - name: region
         description: "The region this employee is responsible for"
+  - name: d_date
+    description: "Dimension table for Date, related to fact table for Orders."
+    
