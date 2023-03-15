@@ -6,10 +6,18 @@ sources:
     schema: norm
     tables:
      - name: t_employee
-     - name: t_region
      - name: t_order
      - name: t_customer
      - name: t_segment
+     - name: t_city
+     - name: t_region
+     - name: t_state
+     - name: t_country
+  - name: orginal
+    database: group3
+    schema: original
+    tables:
+      - name: orders
 
 models:
   - name: stg_employee
@@ -50,3 +58,44 @@ models:
         description: "As SCD2, data from customer may change over time, this is the start time for this tuple"
       - name: valid_to
         description: "As SCD2, data from customer may change over time, this is the end time for this tuple"
+  - name: d_location
+    description: "dimension table from normalized location tables, at maximum granularity of city"
+    columns:
+      - name: city_id
+        description: "City ID as in the normalized tables"
+        tests:
+          - unique
+          - not_null
+      - name: city_name
+        description: "City name, as in the normalized tables"
+      - name: region_name
+        description: "Region names, if any, as in normalized tables"
+      - name: state_name
+        description: "State name, if any, as in normalized tables"
+      - name: country_name
+        description: "Country name, as in normalized tables"
+  - name: f_order_row
+    description: "fact table for order rows, used for query on order_id"
+    columns:
+      - name: row_id
+        description: "This is the ID from the source order table"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "This is the key for dates present in each order"
+      - name: customer_id
+        description: "This is the key for customer"
+      - name: city_id
+        description: "This is the key for location"
+      - name: ship_date
+      - name: ship_mode
+      - name: postal_code
+      - name: product_id
+      - name: category
+      - name: sub_category
+      - name: product_name
+      - name: sales
+      - name: quantity
+      - name: discount
+      - name: profit
