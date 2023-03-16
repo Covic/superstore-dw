@@ -1,21 +1,28 @@
 #This is a sandbox project, with superstore theme, for testing and learning
 
-## VERSION 2.4.1
+## VERSION 2.4.2
 
  ISSUES:
 
-- SCD2 for location and date not suported (suposed not to change)
+- SCD2 for location and date not suported (suposed not to change), need to fix
+timestamps as in other SCD2 if this should be able to change.
 
-- "Date" table stell does not use the correct granularity, could run for 
-unique dates, or use an YEARMODA format for key, or build an external source 
-with date key names and other info as a calendar.
+- "Date" table still does not use the correct granularity as on early versions, 
+could run for unique dates, or use an YEARMODA format transformation to generate a 
+key, or build an external source with date key names and other info as a calendar
+and converted YEARMODA for key.
 
-- fact table for order got source on norm schema, tracking why "original" 
-schema could not be reached.
+- The fact table for order got source placed on "norm" schema with o relationships, 
+even it "Orders" was not in NF, still tracking why "original" schema could not 
+be reached by DBT.
 
-- normalized city_id and city name seems to use some external source
+- Normalized table city_id and name seems to use some external source, or have
+serial IDs from a combination of other location variables for its key.
 
-- order data from "original" source for testing
+- Order data from "original" source for testing, they have maximum granularity (order
+rows, not orders), it could be reconstructed from normalized schema as other dimensions,
+but any normalization transformation may impact on norm->DW, and that could not be 
+tracked without a original->DW.
 
 ## The general model
 
