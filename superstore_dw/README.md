@@ -2,27 +2,27 @@
 
 ## VERSION 2.4.2
 
- ISSUES:
+KNOWN ISSUES:
 
 - SCD2 for location and date not suported (suposed not to change), need to fix
-timestamps as in other SCD2 if this should be able to change.
+timestamps as in other SCD2 if this should be able to change the same way.
 
 - "Date" table still does not use the correct granularity as on early versions, 
-could run for unique dates, or use an YEARMODA format transformation to generate a 
-key, or build an external source with date key names and other info as a calendar
-and converted YEARMODA for key.
+could run queries for unique dates, or use an YEARMODA format transformation to 
+generate a key, or build an external source with date key names and other info 
+as a calendar and converted YEARMODA for key.
 
-- The fact table for order got source placed on "norm" schema with o relationships, 
-even it "Orders" was not in NF, still tracking why "original" schema could not 
-be reached by DBT.
+- The fact table for order got source placed on "norm" schema with no 
+relationships, the "Orders" table was not in NF, still tracking why "original" 
+schema could not be reached by DBT as all credentials seems right.
 
 - Normalized table city_id and name seems to use some external source, or have
-serial IDs from a combination of other location variables for its key.
+serial IDs from a combination of other location variables for its key, combinations
+can be troublesome on stress cases.
 
-- Order data from "original" source for testing, they have maximum granularity (order
-rows, not orders), it could be reconstructed from normalized schema as other dimensions,
-but any normalization transformation may impact on norm->DW, and that could not be 
-tracked without a original->DW.
+- Order data from "original" source for testing, it have maximum granularity (order
+rows, not orders), it also could be reconstructed from normalized schema as other 
+dimensions, but any normalization transformation may impact on norm->DW.
 
 ## The general model
 
