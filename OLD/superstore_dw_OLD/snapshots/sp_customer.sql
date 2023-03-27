@@ -2,6 +2,7 @@
 
 {{
     config(
+        target_schema='snapshots',
         unique_key='customer_id',
         strategy='check',
         check_cols=['customer_name', 'segment']
@@ -10,6 +11,6 @@
 
 select
     *
-from {{ ref('stg_customer') }}
+from {{ ref('d_customer') }}
 
 {% endsnapshot %}

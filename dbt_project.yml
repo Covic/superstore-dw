@@ -1,27 +1,22 @@
-
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
+# This version have staging and seed directories, staging store all transformations to be
+# done on the data before running the models, and the seeds directory have auxiliary tables 
+# and data, like a date table on day granularity and other external sources.
 name: 'superstore_dw'
-version: '1.0.1'
+version: '3.0.1'
 config-version: 2
 
-# This setting is added in version 1.0.1 and set the root directory to 
-#the superstore_dw
-project-root: superstore_dw
-
 # This setting configures which "profile" dbt uses for this project.
-profile: 'default'
+profile: 'superstore_dw'
 
 # These configurations specify where dbt should look for different types of files.
-# The `source-paths` config, for example, states that models in this project can be
+# The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-model-paths: ["superstore_dw/models"]
-analysis-paths: ["superstore_dw/analyses"]
-test-paths: ["superstore_dw/tests"]
-seed-paths: ["superstore_dw/seeds"]
-macro-paths: ["superstore_dw/macros"]
-snapshot-paths: ["superstore_dw/snapshots"]
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
 
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
@@ -37,6 +32,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   superstore_dw:
-    # Applies to all files under models/example/
-    example:
-      materialized: view
+    # Config indicated by + and applies to all files under models/example/
+    +materialized: table
+    staging:
+      +schema: staging
+
+seeds:
+  +schema: staging
+
+snapshots:
+  superstore_dw:
+    +target_schema: "snapshots"
