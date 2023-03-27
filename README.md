@@ -1,33 +1,24 @@
-Welcome to your new dbt project!
-
 ### This is a simple sandbox for learning dbt tools and some other cool stuff, I will use
 this README file to explain some configuration changes step by step. For version 1 there 
-will be only configuration and testing iussues, for version 2 on the README will be
-placed on the project folder.
+will be only configuration and testing iussues, for version 2 the basic integration with
+the database and models are tested, on version 3 a complete solution proposed on class will
+be used and modified for the same purpose.
 
-The first task on dbt will be to change dbt_project.yml to change the working directoty
-from root (default) to superstore_dw, after that perform a dbt test and dbt run to Check 
-if everything is fine.
+On v3.0.1 the changes are:
+- Complete model to be used, some names were changed for cenvention (i.e. location to geography)
+- This version is set to replicate the environment, run the tests, and check the results.
+- Some documentations was added and files replaced, but no model, snapshot, or database 
+changes.
+- There is a staging directory for transformations, as well as a seeds directory for external
+data and complements, so any context change can be isolated and  controlled.
 
-On v1.0.1 the changes are:
-- To name the project as superstore_dw
-- To change root to -\superstore_dw
-- To test if everything is fine
+On v3.0.2 the changes are:
+- Orders (source) changed to add a new column named referenceYEARMO an an integer, if null the
+order still did not complete a payment, as the order is still being processed,
+after they are resolved, this must be the same fiscal year and month.
+- Some minor changes over files to be replaced on old directories
 
-On v1.0.2 the changes are:
-- Setting up subdirectory on dbt account setting for the project.
-- Update schema.yml inside models directory to check model effects upon database
-- Obs. stg_employee is materialized as a view, not a table, on the dw schema
-
-On v1.0.3 (wrong name as v1.3) the changes are:
-- Checking if the subdirectory change is properly done.
-- Create an OLD directory and sanitize all tutorial templates
-- Test some DB and DW changes and check if all is working well, even on error simulated cases.
-
-On v1.0.4
-- Just renaming the version and updating this readme file.
-
-### Using the starter project
+### (lines bellow as in the starter tutorial) Using the starter project
 
 Try running the following commands:
 - dbt run

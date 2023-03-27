@@ -1,0 +1,104 @@
+version: 2
+
+sources:
+  - name: norm
+    database: teacher
+    schema: norm
+    tables:
+     - name: t_employee
+     - name: t_region
+     - name: t_customer
+     - name: t_segment
+     - name: t_city
+     - name: t_country
+     - name: t_state
+     - name: t_order
+     - name: t_order_line
+     - name: t_shipment
+     - name: t_ship_mode
+     - name: t_return
+
+
+models:
+  - name: stg_employee
+    columns:
+      - name: employee_id
+        description: "A unique identifier for the employee"
+        tests:
+          - unique
+          - not_null
+      - name: employee_name
+        description: "The name of the employee"
+      - name: region
+        description: "The region this employee is responsible for"
+  - name: stg_customer
+    columns:
+      - name: customer_id
+        description: "A unique identifier for the customer"
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "The name of the customer"
+      - name: segment
+        description: "The segment this customer belongs to"
+  - name: stg_city
+    columns:
+      - name: city_id
+        description: "A unique identifier for the city"
+        tests:
+          - unique
+          - not_null
+      - name: city_name
+        description: "The name of the city"
+      - name: state
+        description: "The state this city belongs to"
+      - name: country
+        description: "The country this city belongs to"
+      - name: region
+        description: "The region this city belongs to"
+  - name: stg_order_line
+    columns:
+      - name: order_line_id
+        description: "A unique identifier for the order line"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Unique identifier for the order. One order may contain more than one order line."
+      - name: order_date
+        description: "When the order was placed."
+      - name: customer_id
+        description: "The ID of the customer who placed the order."
+      - name: sales
+        description: "The amount of sales this order line represents."
+      - name: quantity
+        description: "The number of units of product ordered in this line."
+      - name: discount
+        description: "The discount percentage applied to this order line."
+      - name: profit
+        description: "The gross profit associated with this order line."
+  - name: stg_shipment
+    columns:
+      - name: shipment_id
+        description: "A unique identifier for the shipment. Each shipment pertains to a given order."
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "The order that was shipped."
+      - name: ship_mode
+        description: "The ship mode of this shipment."
+      - name: city_id
+        description: "The city the order was shipped to."
+      - name: ship_date
+        description: "When the order was shipped."
+  - name: stg_return
+    columns:
+      - name: return_id
+        description: "A unique identifier for the return."
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "The order that was returned."
