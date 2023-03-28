@@ -3,6 +3,9 @@ version: 2
 snapshots:
   - name: sp_employee
     description: "A snapshot of the stg_employee model, to keep track of changes to that table"
+    strategy: timestamp
+    target_schema: snapshots
+    unique_key: dbt_scd_id
     columns:
       - name: dbt_scd_id
         description: "A surrogate key created by dbt. It is the primary key of this table"
@@ -19,6 +22,9 @@ snapshots:
         description: "The timestamp of when this record was last updated"
   - name: sp_customer
     description: "A snapshot of the stg_customer model, to keep track of changes to that table"
+    strategy: timestamp
+    target_schema: snapshots
+    unique_key: dbt_scd_id
     columns:
       - name: dbt_scd_id
         description: "A surrogate key created by dbt. It is the primary key of this table"
@@ -39,6 +45,9 @@ snapshots:
       This snapshot only tracks changes to `region`. All changes to city name,
       state and country will be assumed to be corrects (SCD Type I) and should
       not generate a new version of the city.
+    strategy: timestamp  
+    target_schema: snapshots
+    unique_key: dbt_scd_id
     columns:
       - name: dbt_scd_id
         description: "A surrogate key created by dbt. It is the primary key of this table"
