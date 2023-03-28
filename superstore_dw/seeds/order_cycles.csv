@@ -1,4 +1,4 @@
-"order_id","ship_date","order_cycles","is_complete,1
+"order_id","ship_date","order_cycles","is_complete"
 "CA-2020-126221","2021-01-05",1,1
 "CA-2020-146626","2021-01-05",1,1
 "CA-2020-158673","2021-01-04",1,1
