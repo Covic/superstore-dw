@@ -1,5 +1,5 @@
-### This is a simple sandbox for learning dbt tools and some other cool stuff, I will use
-this README file to explain some configuration changes step by step. For version 1 there 
+### This is a simple sandbox for learning dbt tools and some other cool stuff
+This README file explains some configuration changes step by step. For version 1 there 
 will be only configuration and testing iussues, for version 2 the basic integration with
 the database and models are tested, on version 3 a complete solution proposed on class will
 be used and modified for the same purpose.
